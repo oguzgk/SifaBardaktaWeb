@@ -1,3 +1,9 @@
+## Şifa Bardakta Web Sitesi 
+- Bu web sitesi Şifa Bardakta Mobil Uygulamasının tanıtım amacıyla yapılmış bir projedir.
+
+## Web Sitesi 
+Adres: https://oguzgk.github.io/SifaBardaktaWeb/
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
