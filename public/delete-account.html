@@ -209,10 +209,11 @@
         </ul>
     </div>
 
-    <form id="deleteForm" onsubmit="handleFormSubmit(event)">
+    <form id="deleteForm" onsubmit="handleFormSubmit(event)" novalidate>
         <div>
             <label for="userEmail">Kayıtlı E-Posta Adresiniz *</label>
-            <input type="email" id="userEmail" required placeholder="ör: ahmet@gmail.com">
+            <input type="email" id="userEmail" required placeholder="ör: ahmet@gmail.com" oninput="validateEmailInput()">
+            <div id="emailError" style="color: #EF4444; font-size: 13px; margin-top: 4px; display: none;"></div>
         </div>
 
         <div>
@@ -220,11 +221,11 @@
             <textarea id="reason" rows="3" placeholder="Hesabınızı neden silmek istediğinizi kısaca belirtebilirsiniz..."></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</button>
+        <button type="submit" id="submitBtn" class="btn-submit">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</button>
     </form>
 
     <div id="successMessage" class="success-message">
-        ✅ Hesap silme talebiniz başarıyla alınmıştır. Kayıtlı e-posta adresinize doğrulama mesajı gönderilerek hesabınız ve tüm verileriniz 24 saat içerisinde sistemden kalıcı olarak silinecektir.
+        ✅ Hesap silme talebiniz başarıyla alınmıştır. Talebiniz <strong>sifabardakta@gmail.com</strong> yönetici adresimize iletilmiştir ve hesabınız 24 saat içerisinde sistemden tamamen silinecektir.
     </div>
 
     <div class="footer">
@@ -233,13 +234,42 @@
 </div>
 
 <script>
+    function validateEmailInput() {
+        const emailInput = document.getElementById('userEmail');
+        const errorDiv = document.getElementById('emailError');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const value = emailInput.value.trim();
+
+        if (!value) {
+            errorDiv.textContent = '⚠️ Lütfen geçerli bir e-posta adresi giriniz.';
+            errorDiv.style.display = 'block';
+            return false;
+        } else if (!emailRegex.test(value)) {
+            errorDiv.textContent = '⚠️ Girdiğiniz e-posta adresi biçimi geçersiz (ör: ad@domain.com).';
+            errorDiv.style.display = 'block';
+            return false;
+        } else {
+            errorDiv.style.display = 'none';
+            return true;
+        }
+    }
+
     function handleFormSubmit(e) {
         e.preventDefault();
-        const email = document.getElementById('userEmail').value;
-        if (email) {
-            document.getElementById('deleteForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-        }
+        const isValid = validateEmailInput();
+        if (!isValid) return;
+
+        const email = document.getElementById('userEmail').value.trim();
+        const reason = document.getElementById('reason').value.trim();
+
+        // Send mail notification to sifabardakta@gmail.com via mailto
+        const mailSubject = encodeURIComponent("Hesap ve Veri Silme Talebi - Şifa Bardakta");
+        const mailBody = encodeURIComponent(`Hesap Silme Talebi:\n- Kayıtlı E-Posta: ${email}\n- Sebebi: ${reason || 'Belirtilmedi'}\n\nLütfen bu kullanıcının hesabını ve tüm verilerini Firebase Firestore üzerinden siliniz.`);
+        
+        window.location.href = `mailto:sifabardakta@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+
+        document.getElementById('deleteForm').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
     }
 </script>
 
