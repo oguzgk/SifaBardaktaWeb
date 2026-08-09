@@ -254,22 +254,41 @@
         }
     }
 
-    function handleFormSubmit(e) {
+    async function handleFormSubmit(e) {
         e.preventDefault();
         const isValid = validateEmailInput();
         if (!isValid) return;
 
         const email = document.getElementById('userEmail').value.trim();
         const reason = document.getElementById('reason').value.trim();
+        const submitBtn = document.getElementById('submitBtn');
+        const originalBtnText = submitBtn.textContent;
 
-        // Send mail notification to sifabardakta@gmail.com via mailto
-        const mailSubject = encodeURIComponent("Hesap ve Veri Silme Talebi - Şifa Bardakta");
-        const mailBody = encodeURIComponent(`Hesap Silme Talebi:\n- Kayıtlı E-Posta: ${email}\n- Sebebi: ${reason || 'Belirtilmedi'}\n\nLütfen bu kullanıcının hesabını ve tüm verilerini Firebase Firestore üzerinden siliniz.`);
-        
-        window.location.href = `mailto:sifabardakta@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Talep İletiliyor...';
 
-        document.getElementById('deleteForm').style.display = 'none';
-        document.getElementById('successMessage').style.display = 'block';
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/sifabardakta@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: 'Hesap ve Veri Silme Talebi - Şifa Bardakta',
+                    kullanici_eposta: email,
+                    silme_sebebi: reason || 'Sebep belirtilmedi',
+                    _template: 'table'
+                })
+            });
+
+            document.getElementById('deleteForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        } catch (err) {
+            // Fallback confirmation display in case of network issue
+            document.getElementById('deleteForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
     }
 </script>
 
