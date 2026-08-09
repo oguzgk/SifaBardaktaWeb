@@ -213,6 +213,7 @@
         <input type="hidden" name="_subject" value="Hesap ve Veri Silme Talebi - Şifa Bardakta">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://oguzgk.github.io/SifaBardaktaWeb/delete-account.html?submitted=true">
 
         <div>
             <label for="userEmail">Kayıtlı E-Posta Adresiniz *</label>
@@ -229,7 +230,7 @@
     </form>
 
     <div id="successMessage" class="success-message">
-        ✅ Hesap silme talebiniz başarıyla alınmıştır. Talebiniz <strong>sifabardakta@gmail.com</strong> yönetici adresimize iletilmiştir.
+        ✅ Hesap silme talebiniz başarıyla alınmıştır. Talebiniz <strong>sifabardakta@gmail.com</strong> yönetici adresimize iletilmiştir ve hesabınız 24 saat içerisinde sistemden silinecektir.
     </div>
 
     <div class="footer">
@@ -238,6 +239,13 @@
 </div>
 
 <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.location.search.includes('submitted=true')) {
+            document.getElementById('deleteForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
+    });
+
     function validateEmailInput() {
         const emailInput = document.getElementById('userEmail');
         const errorDiv = document.getElementById('emailError');
@@ -261,7 +269,6 @@
     function handleFormSubmit(e) {
         const isValid = validateEmailInput();
         if (!isValid) {
-            e.preventDefault();
             return false;
         }
         return true;
