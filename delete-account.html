@@ -209,23 +209,27 @@
         </ul>
     </div>
 
-    <form id="deleteForm" onsubmit="handleFormSubmit(event)" novalidate>
+    <form id="deleteForm" action="https://formsubmit.co/sifabardakta@gmail.com" method="POST" onsubmit="return handleFormSubmit(event)">
+        <input type="hidden" name="_subject" value="Hesap ve Veri Silme Talebi - Şifa Bardakta">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
         <div>
             <label for="userEmail">Kayıtlı E-Posta Adresiniz *</label>
-            <input type="email" id="userEmail" required placeholder="ör: ahmet@gmail.com" oninput="validateEmailInput()">
+            <input type="email" id="userEmail" name="kullanici_eposta" required placeholder="ör: ahmet@gmail.com" oninput="validateEmailInput()">
             <div id="emailError" style="color: #EF4444; font-size: 13px; margin-top: 4px; display: none;"></div>
         </div>
 
         <div>
             <label for="reason">Silme Sebebi (İsteğe Bağlı)</label>
-            <textarea id="reason" rows="3" placeholder="Hesabınızı neden silmek istediğinizi kısaca belirtebilirsiniz..."></textarea>
+            <textarea id="reason" name="silme_sebebi" rows="3" placeholder="Hesabınızı neden silmek istediğinizi kısaca belirtebilirsiniz..."></textarea>
         </div>
 
         <button type="submit" id="submitBtn" class="btn-submit">Hesabımı ve Tüm Verilerimi Kalıcı Olarak Sil</button>
     </form>
 
     <div id="successMessage" class="success-message">
-        ✅ Hesap silme talebiniz başarıyla alınmıştır. Talebiniz <strong>sifabardakta@gmail.com</strong> yönetici adresimize iletilmiştir ve hesabınız 24 saat içerisinde sistemden tamamen silinecektir.
+        ✅ Hesap silme talebiniz başarıyla alınmıştır. Talebiniz <strong>sifabardakta@gmail.com</strong> yönetici adresimize iletilmiştir.
     </div>
 
     <div class="footer">
@@ -254,41 +258,13 @@
         }
     }
 
-    async function handleFormSubmit(e) {
-        e.preventDefault();
+    function handleFormSubmit(e) {
         const isValid = validateEmailInput();
-        if (!isValid) return;
-
-        const email = document.getElementById('userEmail').value.trim();
-        const reason = document.getElementById('reason').value.trim();
-        const submitBtn = document.getElementById('submitBtn');
-        const originalBtnText = submitBtn.textContent;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Talep İletiliyor...';
-
-        try {
-            const response = await fetch('https://formsubmit.co/ajax/sifabardakta@gmail.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    _subject: 'Hesap ve Veri Silme Talebi - Şifa Bardakta',
-                    kullanici_eposta: email,
-                    silme_sebebi: reason || 'Sebep belirtilmedi',
-                    _template: 'table'
-                })
-            });
-
-            document.getElementById('deleteForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-        } catch (err) {
-            // Fallback confirmation display in case of network issue
-            document.getElementById('deleteForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
+        if (!isValid) {
+            e.preventDefault();
+            return false;
         }
+        return true;
     }
 </script>
 
