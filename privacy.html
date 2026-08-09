@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifa Bardakta - Gizlilik Politikası ve Medikal Sorumluluk Reddi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #090D16;
+            --card-bg: #111827;
+            --emerald-main: #10B981;
+            --emerald-dark: #059669;
+            --text-white: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --border-color: #1F2937;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-white);
+            background-color: var(--bg-main);
+            padding: 24px 16px;
+        }
+
+        .header-bar {
+            max-width: 900px;
+            margin: 0 auto 24px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .logo-area img {
+            width: 34px;
+            height: 34px;
+        }
+
+        .back-home {
+            color: var(--emerald-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .policy-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald-main);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .last-updated {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--emerald-main);
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        p, li {
+            font-size: 15px;
+            color: #D1D5DB;
+            margin-bottom: 12px;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .disclaimer-box {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1.5px solid rgba(245, 158, 11, 0.4);
+            color: #FCD34D;
+            padding: 24px;
+            border-radius: 18px;
+            margin: 32px 0;
+        }
+
+        .disclaimer-box h2 {
+            color: #F59E0B;
+            border-bottom-color: rgba(245, 158, 11, 0.2);
+            margin-top: 0;
+        }
+
+        .action-card {
+            background-color: rgba(16, 185, 129, 0.08);
+            border: 1.5px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .action-card p {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #EF4444;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13.5px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-delete:hover {
+            background-color: #DC2626;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <a href="index.html" class="logo-area">
+        <img src="https://cdn-icons-png.flaticon.com/512/3504/3504837.png" alt="Şifa Bardakta Logo">
+        <span>Şifa<span style="color:#10B981">Bardakta</span></span>
+    </a>
+    <a href="index.html" class="back-home">← Ana Sayfaya Dön</a>
+</div>
+
+<div class="container">
+    <span class="policy-badge">Google Play ve KVKK Uyumlu Metin</span>
+    <h1>Gizlilik Politikası ve Medikal Sorumluluk Reddi</h1>
+    <div class="last-updated">Son Güncelleme Tarihi: 09 Ağustos 2026 | Şifa Bardakta Geliştirici Ekibi</div>
+
+    <p>Şifa Bardakta mobil uygulaması ve web platformu olarak, kullanıcılarımızın kişisel verilerinin güvenliğine, gizliliğine ve tıbbi etik ilkelere büyük önem veriyoruz. Bu Gizlilik Politikası, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK"), AB Genel Veri Koruma Tüzüğü ("GDPR") ve Google Play Developer Politikaları uyarınca hazırlanmıştır.</p>
+
+    <h2>1. Veri Sorumlusu</h2>
+    <p>Verileriniz, veri sorumlusu sıfatıyla <strong>Şifa Bardakta Geliştirici Ekibi</strong> tarafından aşağıda açıklanan kapsamda işlenmektedir.</p>
+    <ul>
+        <li><strong>Resmi İletişim E-Postası:</strong> sifabardakta@gmail.com / oguzhangoktemir473@gmail.com</li>
+        <li><strong>Uygulama Platformu:</strong> Google Play Store (Android)</li>
+    </ul>
+
+    <h2>2. İşlenen Kişisel Veriler ve Toplanma Amaçları</h2>
+    <p>Şifa Bardakta mobil uygulamasını kullanırken aşağıdaki verileriniz işlenmektedir:</p>
+    <ul>
+        <li><strong>Kimlik ve İletişim Bilgileri:</strong> Ad, soyad ve e-posta adresi.</li>
+        <li><strong>Giriş ve Oturum Bilgileri:</strong> Google Sign-In veya E-posta/Şifre ile kayıt/giriş esnasında oluşturulan kimlik doğrulama token'ları.</li>
+        <li><strong>Uygulama İçi Tercihler:</strong> Favori eklediğiniz tarifler, arama geçmişi ve isteğe bağlı TÜBİTAK araştırma anketi onay durumu (`surveyConsent`).</li>
+        <li><strong>Yapay Zeka (Aktar Chatbot) Mesajları:</strong> Kişisel sağlık şikayetlerinize uygun bitkisel tarif önerileri sunulması amacıyla gönderdiğiniz soru mesajları.</li>
+    </ul>
+
+    <h2>3. Veri Güvenliği ve Altyapı Sağlayıcıları</h2>
+    <p>Tüm kullanıcı verileri, Google Firebase (Authentication ve Cloud Firestore) altyapısı üzerinde uçtan uca şifreli (HTTPS/TLS) protokoller ile güvenle saklanmaktadır. Verileriniz kesinlikle üçüncü taraf reklam şirketlerine satılmaz, kiralanmaz veya ticari amaçlarla paylaşılmaz.</p>
+
+    <div class="disclaimer-box">
+        <h2>⚠️ 4. TIBBİ VE HUKUKİ SORUMLULUK REDDİ (MEDICAL DISCLAIMER)</h2>
+        <p><strong>Lütfen Dikkatle Okuyunuz:</strong></p>
+        <ol>
+            <li><strong>Tıbbi Teşhis ve Tedavi Yerine Geçmez:</strong> Şifa Bardakta uygulaması bünyesinde yer alan yapay zeka (Aktar Chatbot) önerileri ve hazır bitki çayı tarifleri yalnızca genel bilgilendirme amacıyla sunulmaktadır. Uygulama bir doktor veya tıbbi uzman değildir.</li>
+            <li><strong>İlaç Niteliğinde Değildir:</strong> Sunulan hiçbir tarif, bitki veya kür İLAÇ NİTELİĞİNDE DEĞİLDİR. Uygulama hiçbir hastalığı teşhis, tedavi veya iyileştirme garantisi vermez.</li>
+            <li><strong>Sorumluluk Kabul Edilmemesi:</strong> Kullanıcının mevcut alerjileri, kronik rahatsızlıkları, hamilelik durumları veya ilaç etkileşimleri nedeniyle uygulamadaki tarifleri tüketmesi sonucu doğabilecek hiçbir olumsuzlukta Şifa Bardakta ekibi hukuki sorumluluk kabul etmemektedir.</li>
+            <li><strong>Uzman Doktor Danışmanlığı:</strong> Herhangi bir bitkisel ürünü tüketmeden önce mutlaka uzman bir hekime veya eczacıya danışınız.</li>
+        </ol>
+    </div>
+
+    <h2>5. Kullanıcı Hakları ve Hesap Silme</h2>
+    <p>Kullanıcılar diledikleri an hesaplarını ve uygulamada saklanan tüm kişisel verilerini tamamen silme hakkına sahiptir.</p>
+
+    <div class="action-card">
+        <div>
+            <p>Hesabınızı ve tüm verilerinizi kalıcı olarak silmek mi istiyorsunuz?</p>
+            <span style="font-size: 13px; color: var(--text-muted);">Uygulama içinden Profil > Hesabımı Sil alanından veya web üzerinden anında silebilirsiniz.</span>
+        </div>
+        <a href="delete-account.html" class="btn-delete">Hesap Silme Talebi Gönder →</a>
+    </div>
+
+    <h2>6. İletişim</h2>
+    <p>Gizlilik Politikası veya kişisel verilerinizle ilgili her türlü soru ve talebiniz için bize <strong>sifabardakta@gmail.com</strong> e-posta adresi üzerinden ulaşabilirsiniz.</p>
+
+    <div class="footer">
+        © 2026 Şifa Bardakta Mobil Uygulaması. Tüm hakları saklıdır.
+    </div>
+</div>
+
+</body>
+</html>
